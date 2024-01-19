@@ -37,7 +37,7 @@ for p in chinese_spm.pieces:
     if piece not in llama_spm_tokens_set:
         new_p = sp_pb2_model.ModelProto().SentencePiece()
         new_p.piece = piece
-        new_p.score = 0
+        new_p.score = 0 # wangheng 新增的中文词，赋予的权重均为0.0，原本词典中，大部分都是负权重；其中权重越大，越容易切分成一个词；
         llama_spm.pieces.append(new_p)
 print(f"New model pieces: {len(llama_spm.pieces)}")
 
